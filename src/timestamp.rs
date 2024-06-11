@@ -1,9 +1,7 @@
-#[cfg(feature = "serde")]
-use serde::{Deserialize, Serialize};
 use std::time::SystemTime;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Timestamp {
     unix_secs: u32,
 }
