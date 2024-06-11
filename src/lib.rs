@@ -1,8 +1,8 @@
 mod awid;
 mod timestamp;
 
-pub use awid::Awid;
-pub use timestamp::Timestamp;
+pub use awid::*;
+pub use timestamp::*;
 
 #[cfg(test)]
 mod tests {

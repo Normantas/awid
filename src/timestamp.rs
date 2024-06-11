@@ -43,3 +43,30 @@ impl Timestamp {
         self.unix_secs
     }
 }
+
+#[cfg(feature = "chrono")]
+use chrono::{DateTime, Utc};
+
+#[cfg(feature = "chrono")]
+#[derive(thiserror::Error, Debug)]
+pub enum DateTimeError {
+    #[error("the provided datetime is too large")]
+    DateTimeTooLarge,
+}
+
+#[cfg(feature = "chrono")]
+impl Timestamp {
+    /// Returns the timestamp's time as a Chrono DateTime.
+    pub fn to_datetime(&self) -> DateTime<Utc> {
+        DateTime::from_timestamp(self.unix_secs as i64, 0).unwrap()
+    }
+
+    /// Creates a timestamp from a Chrono DateTime.
+    pub fn from_datetime(datetime: DateTime<Utc>) -> Result<Self, DateTimeError> {
+        if let Ok(unix_secs) = datetime.timestamp().try_into() {
+            Ok(Self::from_unix_secs(unix_secs))
+        } else {
+            Err(DateTimeError::DateTimeTooLarge)
+        }
+    }
+}
