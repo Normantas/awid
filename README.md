@@ -17,7 +17,7 @@ Snowflake - 64 bits (8 bytes)\
 Awid - 72 bits (9 bytes)\
 Xid - 96 bits (12 bytes)\
 UUID - 128 bits (16 bytes)\
-*Note: each ID has it's own purpose. A big size isn't always a bad thing.*
+*Note: ID's have different use cases. A large size isn't always a bad thing.*
 
 ### Performance tests
 Creating an Awid takes 50ns, and creating an Awid with a supplied timestamp takes 15ns.\
