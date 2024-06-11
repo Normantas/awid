@@ -13,10 +13,11 @@ Awid's have 5 bytes of random data, which has 2^40 possible combinations.\
 That is 1,099,511,627,776 possible combinations *for each second*.
 
 ### Size comparison with other ID's
-Snowflake - 64 bits (8 bytes)
-Awid - 72 bits (9 bytes)
-Xid - 96 bits (12 bytes)
-UUID - 128 bits (16 bytes)
+Snowflake - 64 bits (8 bytes)\
+Awid - 72 bits (9 bytes)\
+Xid - 96 bits (12 bytes)\
+UUID - 128 bits (16 bytes)\
+*Note: each ID has it's own purpose. A big size isn't always a bad thing.*
 
 ### Performance tests
 Creating an Awid takes 50ns, and creating an Awid with a supplied timestamp takes 15ns.\
