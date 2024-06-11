@@ -10,7 +10,7 @@ version = "0.1.0"
 edition = "2021"
 
 [features]
-serde = ["dep:serde", "bytes/serde"]
+serde = ["dep:serde"]
 
 [dependencies]
 rand_core = "0.6.4"
