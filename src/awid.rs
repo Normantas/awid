@@ -1,7 +1,11 @@
+#[cfg(feature = "serde")]
+use serde::{Serialize, Deserialize};
 use rand_core::RngCore;
 
 use crate::Timestamp;
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Awid {
     timestamp: Timestamp,
     random: [u8; 5],
