@@ -31,4 +31,20 @@ mod tests {
 
         assert_eq!(timestamp, decoded.timestamp());
     }
+
+    #[test]
+    fn awid_from_bytes() {
+        let bytes = [174, 142, 104, 102, 19, 152, 22, 129, 181];
+        let awid = Awid::from_bytes(bytes);
+
+        assert_eq!(awid.timestamp().as_unix_secs(), 1718128302)
+    }
+
+    #[test]
+    fn awid_from_base32() {
+        let encoded = "467PGSP7P6H01S8";
+        let awid = Awid::from_base32(encoded).unwrap();
+
+        assert_eq!(awid.timestamp().as_unix_secs(), 1718128417)
+    }
 }

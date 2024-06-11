@@ -66,7 +66,7 @@ pub enum FromBase32Error {
 #[cfg(feature = "base32")]
 impl Awid {
     /// Creates an Awid from the base32 representation of it.
-    pub fn from_base32(encoded: String) -> Result<Self, FromBase32Error> {
+    pub fn from_base32(encoded: &str) -> Result<Self, FromBase32Error> {
         if let Some(decoded) = base32::decode(Alphabet::Crockford, &encoded) {
             let bytes: [u8; 9] = decoded.try_into().map_err(|_| FromBase32Error::InvalidLengthError)?;
             Ok(Self::from_bytes(bytes))
@@ -88,7 +88,6 @@ use core::fmt;
 #[cfg(feature = "base32")]
 impl fmt::Display for Awid {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let bytes = self.as_bytes();
-        write!(f, "{}", base32::encode(Alphabet::Crockford, &bytes))
+        write!(f, "{}", self.to_base32())
     }
 }
