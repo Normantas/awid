@@ -1,9 +1,11 @@
 #[cfg(feature = "base32")]
 use base32::Alphabet;
+#[cfg(feature = "base32")]
+use core::fmt;
+
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-use core::fmt;
 use rand_core::RngCore;
 
 use crate::Timestamp;

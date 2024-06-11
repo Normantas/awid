@@ -17,7 +17,9 @@ fn criterion_benchmark(c: &mut Criterion) {
     let timestamp = Timestamp::now();
 
     c.bench_function("create Awid", |b| b.iter(|| create_awid()));
-    c.bench_function("create Awid from timestamp", |b| b.iter(|| create_awid_from_timestamp(black_box(timestamp))));
+    c.bench_function("create Awid from timestamp", |b| {
+        b.iter(|| create_awid_from_timestamp(black_box(timestamp)))
+    });
 }
 
 criterion_group!(benches, criterion_benchmark);
