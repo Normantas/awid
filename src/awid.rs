@@ -36,7 +36,7 @@ impl Awid {
         }
     }
 
-    /// Return the bytes of the Awid. The first 4 bytes are the Unix timestamp, the last 5 bytes are the random data.
+    /// Return the byte representation of the Awid. The first 4 bytes are the Unix timestamp, the last 5 bytes are the random data.
     pub fn as_bytes(&self) -> [u8; 9] {
         let mut bytes = Vec::new();
         bytes.extend(self.timestamp.as_bytes());
@@ -75,7 +75,7 @@ impl Awid {
         }
     }
 
-    /// Return the bytes of the Awid. The first 4 bytes are the Unix timestamp, the last 5 bytes are the random data.
+    /// Return the base32 encoded representation of the Awid.
     pub fn to_base32(&self) -> String {
         let bytes = self.as_bytes();
         base32::encode(Alphabet::Crockford, &bytes)
