@@ -40,6 +40,7 @@ mod tests {
         assert_eq!(awid.timestamp().as_unix_secs(), 1718128302)
     }
 
+    #[cfg(feature = "base32")]
     #[test]
     fn awid_from_base32() {
         let encoded = "467PGSP7P6H01S8";
